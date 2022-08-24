@@ -77,15 +77,30 @@ a {
     margin: 100px auto 200px auto;
     width: 300px;
     background-color: #E5E5E5;
+    text-transform:uppercase;
+    border: 1px solid #0A3871;
 
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #0A3871;
     opacity: 1; /* Firefox */
+        text-transform:lowercase;
+
   }
   :-ms-input-placeholder { /* Internet Explorer 10-11 */
     color: #0A3871;
+    text-transform:lowercase;
+
   }
   ::-ms-input-placeholder { /* Microsoft Edge */
     color: #0A3871;
+    text-transform:lowercase;
+
   }
+
+
+/*Alertas al usuario*/
+
+.valor-invalido{
+    border: 1px solid #ff0000;
+}

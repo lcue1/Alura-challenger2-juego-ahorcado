@@ -30,9 +30,21 @@ function controladorEventosclick() {
         }
 
         if (e.target.id === "btnGuardarYEmpezar") {
-            cargarPagina("html/iniciarJuego.html")
 
-          
+            let inputNuevaPalabra = document.querySelector("#inputNuevaPalabra")
+            let valorMayusculasInput = inputNuevaPalabra.value.toUpperCase()
+            let vaalidacion = validarCadenas(//no acentos y caracteres especiales
+                /[ÁÉÍÍO\-.,_:;°!"#$%&/()=?¡ ¬|@·~½¬{\[\]}\\\¸]/,
+                valorMayusculasInput
+            )
+            if (vaalidacion !== -1) {
+                alertarAlUsuario(inputNuevaPalabra)
+                return
+            }
+
+            console.log(1111);
+            //  cargarPagina("html/iniciarJuego.html")
+
         }
 
 
@@ -51,18 +63,30 @@ function cargarPagina(nombrePagina) {
     xhttp.send();
 }
 
+function validarCadenas(rE, string) {
+    return string.search(rE)
+}
+
+function alertarAlUsuario(elementoDOM) {
+    let clist=elementoDOM.classList
+    clist.add("valor-invalido")
+    console.log(clist);
+    setTimeout(() => {
+        clist.remove("valor-invalido")
+        inputNuevaPalabra.focus()
+
+    }, 2000);
+}
+
+/********************************** */
+
 function validadorEventosTeclado() {
-    d.addEventListener("keyup",function (e) {
-        if(e.target.id==="inputNuevaPalabra"){
-            const inputNuevaPalabra = document.querySelector("#inputNuevaPalabra")
-            if(inputNuevaPalabra.value.length>8){
-                let maximoPermitido=inputNuevaPalabra.value
-                inputNuevaPalabra.value=maximoPermitido.substring(0,8)
-            }
+    d.addEventListener("keydown", function (e) {
+        if (e.target.id === "inputNuevaPalabra") {
+
         }
     })
 }
-
 
 function validarNumeroLetras(input, n) {
     if (input.value.lenght > n) {
