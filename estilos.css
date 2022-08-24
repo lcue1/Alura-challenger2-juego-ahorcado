@@ -1,0 +1,91 @@
+/* Reset */
+a {
+    text-decoration: none;
+}
+
+
+/* Estructura principal */
+.c-principal {
+    width: 600px;
+    height: 700px;
+    background-color: #E5E5E5;
+    margin: 0 auto;
+}
+.inicio{
+    margin-top: 200px;
+}
+.c-botones-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+}
+.c-botones-horizontal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.img-logo{
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 31px;
+}
+
+/* Botones */
+.btn-basico {
+    border: 1px solid #0A3871;
+    border-radius: 30px;
+    min-width: 150px;
+    padding: 20px;
+    font-family: Inter;
+    font-style: Regular;
+    font-size: 10px;
+    margin: 10px;
+    color: #0A3871;
+
+}
+
+.btn-azul {
+    background-color: #0A3871;
+    color: #ffffff;
+}
+
+.info-userio{
+    text-align: center;
+    font-family: Inter;
+    font-style: Regular;
+    font-size: 12px;
+    color: #495057;
+
+}
+
+
+/* Página nueva palara */
+.input-nueva-palabra{
+    border:  none;
+    font-family: Inter;
+    font-style: Regular;
+    font-size: 32px;
+    color: #0A3871;
+    display: block;
+    margin: 100px auto 200px auto;
+    width: 300px;
+    background-color: #E5E5E5;
+
+}
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #0A3871;
+    opacity: 1; /* Firefox */
+  }
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #0A3871;
+  }
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #0A3871;
+  }
