@@ -1,9 +1,12 @@
 "use strict"
-
+import { validarCadenas, inputVacio } from "./validaciones.js";
+import { cargarPagina } from "./cargarPaginas.js";
+import { marcarInputsError } from "./imformarAUsuario.js";
 const d = document;
 
 //div donde se cargan las diferentes interfaces
 const cPrincipal = d.querySelector("#cPrincipal")
+const palabrasAdivinanza=["FACEBOOK","TWITTER","TICKTOCK","ORACLE","APPLE","VKONTAKTE","GOOGLE","LINUX","WINDOWS","MAC"]
 
 window.onload = function () {
     cargarPagina("html/inicio.html")
@@ -33,17 +36,16 @@ function controladorEventosclick() {
 
             let inputNuevaPalabra = document.querySelector("#inputNuevaPalabra")
             let valorMayusculasInput = inputNuevaPalabra.value.toUpperCase()
-            let vaalidacion = validarCadenas(//no acentos y caracteres especiales
-                /[ÁÉÍÍO\-.,_:;°!"#$%&/()=?¡ ¬|@·~½¬{\[\]}\\\¸]/,
-                valorMayusculasInput
-            )
-            if (vaalidacion !== -1) {
-                alertarAlUsuario(inputNuevaPalabra)
+            let eR=/[ÁÉÍÍO1234567890\-.,_:;°!"#$%&/()=?¡ ¬|@·~½¬{\[\]}\\\¸]/
+            if (
+                validarCadenas(eR,valorMayusculasInput) !== -1 
+                || inputVacio(inputNuevaPalabra)
+                ) {
+                    marcarInputsError(inputNuevaPalabra)
                 return
             }
 
-            console.log(1111);
-            //  cargarPagina("html/iniciarJuego.html")
+            cargarPagina("html/iniciarJuego.html")
 
         }
 
@@ -52,31 +54,10 @@ function controladorEventosclick() {
     })
 }
 
-function cargarPagina(nombrePagina) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            cPrincipal.innerHTML = xhttp.responseText
-        }
-    };
-    xhttp.open("GET", nombrePagina, true);
-    xhttp.send();
-}
 
-function validarCadenas(rE, string) {
-    return string.search(rE)
-}
 
-function alertarAlUsuario(elementoDOM) {
-    let clist=elementoDOM.classList
-    clist.add("valor-invalido")
-    console.log(clist);
-    setTimeout(() => {
-        clist.remove("valor-invalido")
-        inputNuevaPalabra.focus()
 
-    }, 2000);
-}
+
 
 /********************************** */
 
@@ -86,10 +67,4 @@ function validadorEventosTeclado() {
 
         }
     })
-}
-
-function validarNumeroLetras(input, n) {
-    if (input.value.lenght > n) {
-        input.value
-    }
 }
