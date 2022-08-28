@@ -6,14 +6,16 @@ a {
 
 /* Estructura principal */
 .c-principal {
-    width: 600px;
-    height: 700px;
+    width: 700px;
+    height: 750px;
     background-color: #E5E5E5;
     margin: 0 auto;
 }
-.inicio{
+
+.inicio {
     margin-top: 200px;
 }
+
 .c-botones-vertical {
     display: flex;
     flex-direction: column;
@@ -22,7 +24,8 @@ a {
     vertical-align: middle;
     text-align: center;
 }
-.c-botones-horizontal{
+
+.c-botones-horizontal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,7 +34,7 @@ a {
 }
 
 
-.img-logo{
+.img-logo {
     margin-left: 50px;
     margin-top: 20px;
     width: 31px;
@@ -56,7 +59,7 @@ a {
     color: #ffffff;
 }
 
-.info-userio{
+.info-userio {
     text-align: center;
     font-family: Inter;
     font-style: Regular;
@@ -67,8 +70,8 @@ a {
 
 
 /* Página nueva palara */
-.input-nueva-palabra{
-    border:  none;
+.input-nueva-palabra {
+    border: none;
     font-family: Inter;
     font-style: Regular;
     font-size: 32px;
@@ -77,30 +80,74 @@ a {
     margin: 100px auto 200px auto;
     width: 300px;
     background-color: #E5E5E5;
-    text-transform:uppercase;
+    text-transform: uppercase;
     border: 1px solid #0A3871;
 
 }
-::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #0A3871;
-    opacity: 1; /* Firefox */
-        text-transform:lowercase;
 
-  }
-  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: #0A3871;
-    text-transform:lowercase;
+    opacity: 1;
+    /* Firefox */
+    text-transform: lowercase;
 
-  }
-  ::-ms-input-placeholder { /* Microsoft Edge */
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
     color: #0A3871;
-    text-transform:lowercase;
+    text-transform: lowercase;
 
-  }
+}
+
+::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: #0A3871;
+    text-transform: lowercase;
+
+}
+
+
+/*Jugar*/
+
+.pizarra {
+    background-color: #ffffff;
+    width: 100%;
+    height: 400px;
+}
+
+.c_letras-adivinar {
+    text-align: center;
+}
+
+.c-letras-incorrectas {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    text-align: center;
+}
+
+.c_letras-adivinar>span {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 150%;
+    color: #0A3871;
+    margin: 0 20px;
+    padding: 0 5px;
+    border-bottom: 3px solid #0A3871;
+}
+
+
 
 
 /*Alertas al usuario*/
 
-.valor-invalido{
+.valor-invalido {
     border: 1px solid #ff0000;
+
 }
