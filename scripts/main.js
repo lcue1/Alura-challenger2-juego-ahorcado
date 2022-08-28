@@ -74,48 +74,35 @@ function controladorEventosclick() {
 
 
 /********************************** */
-let palabraSorteada = null
-let caracterIcorrecto = []
-let intentos = 0
-let spanAciertos = []
-let palabraAAdivinar = null
-let palabraIngresada = []
 function jugando(e) {
 
     if (validarCadenas(eR, e.key) !== -1 || inputVacio(e.key)) return
     let caracterTipeado = e.key.toUpperCase()
     if (teclasEspecialesPresionadas(e.code)) return
     let indice = palabraSorteada.indexOf(caracterTipeado)
-    if (indice !== -1) {
-        if (spanAciertos[indice].innerHTML === "&nbsp;&nbsp;") {
-            spanAciertos[indice].innerHTML = caracterTipeado
-            palabraSorteada[indice] = null
-            palabraIngresada[indice]=caracterTipeado
-        }
-    } else {
-        if (
-            caracterIcorrecto.indexOf(caracterTipeado) === -1) {
-            caracterIcorrecto.push(caracterTipeado)
-            d.getElementById("cLetrasIncorrectas").innerHTML += caracterTipeado
 
-            // sortearPalabra.getElementById()
+    if(indice!==-1){
+        if(caracteresAcertados[indice].innerHTML!==caracterTipeado){
+            caracteresAcertados[indice].innerHTML=caracterTipeado
+            palabraSorteada[indice]=""
+        }
+    }else{
+        let cLetrasIncorrectas=d.getElementById("cLetrasIncorrectas")
+        if(!cLetrasIncorrectas.innerHTML.includes(caracterTipeado)){
+            cLetrasIncorrectas .innerHTML+=caracterTipeado+" "
         }
         intentos++
     }
-
-    if (intentos >= 9) {//Fin del juego
-        d.removeEventListener("keydown", jugando)
-        console.log("Perdiste");
+    if(intentos==10){
+        d.removeEventListener("keydown",jugando)
+        console.log("perdiste");
     }
-    if (palabraIngresada.indexOf("")===-1) {
-        d.removeEventListener("keydown", jugando)
+    let ganaste=palabraSorteada.filter(v=>v!=="")
+    if(ganaste.length===0){
+        d.removeEventListener("keydown",jugando)
         console.log("Ganaste");
 
     }
-    console.log(intentos);
-    console.log(palabraAAdivinar," = ",palabraIngresada);
-    console.log(palabraAAdivinar.length," = ",palabraIngresada.length);
-
 
 }
 function sortearPalabra() {
@@ -131,17 +118,14 @@ function cargarContenido(contenido) {
     cPrincipal.innerHTML = contenido
 
 }
-
+let palabraSorteada
+let caracteresAcertados=[]
+let intentos=0
 function cargarJuego(contenidoHtml) {
-     palabraSorteada = null
-     caracterIcorrecto = []
-     intentos = 0
-     spanAciertos = []
-     palabraIngresada=[]
-     palabraAAdivinar = null
+    caracteresAcertados=[]
     cPrincipal.innerHTML = contenidoHtml
-    palabraAAdivinar = sortearPalabra()
-    palabraSorteada = Array.from(palabraAAdivinar)
+    intentos=0
+    palabraSorteada = Array.from(sortearPalabra())
     console.log(palabraSorteada, "SORTEADA");
     let fragmento = document.createDocumentFragment()
 
@@ -149,8 +133,7 @@ function cargarJuego(contenidoHtml) {
         let etiquetaSpan = document.createElement("span");
         etiquetaSpan.innerHTML = "&nbsp&nbsp"
         fragmento.appendChild(etiquetaSpan)
-        spanAciertos.push(etiquetaSpan)
-        palabraIngresada[i]=""
+        caracteresAcertados[i]=etiquetaSpan
     }
     d.getElementById("cLetrasAdivinar").appendChild(fragmento)
     d.addEventListener("keydown", jugando)
