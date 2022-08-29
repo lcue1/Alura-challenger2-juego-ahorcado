@@ -14,7 +14,7 @@ const palabrasAdivinanza = ["FACEBOOK", "TWITTER", "TICKTOCK", "ORACLE", "APPLE"
 const eR = /[ÁÉÍÍÓ1234567890\-.<>,_:;°!"#$%&/()=?¿'¡ *´+¨^`¬|@·~½¬{\[\]}\\\¸]/
 let interfazCargada = "inicio"
 window.onload = function () {
-    obtenerPagina("../html/inicio.html", cargarContenido)
+    obtenerPagina("./html/inicio.html", cargarContenido)
     // console.log(cargarPagina("../html/inicio.html"));
     controladorEventosclick();
 
@@ -26,18 +26,18 @@ function controladorEventosclick() {
     d.addEventListener("click", function (e) {
         //console.log(e.target);
         if (e.target.id === "btnIniciar") {
-            obtenerPagina("../html/jugar.html", cargarJuego)
+            obtenerPagina("./html/jugar.html", cargarJuego)
 
         }
 
         if (e.target.id === "btnNuevaPalabra") {
-            obtenerPagina("../html/nuevaPalabra.html", cargarContenido)
+            obtenerPagina("./html/nuevaPalabra.html", cargarContenido)
 
 
         }
 
         if (e.target.id === "btnCancelar") {
-            obtenerPagina("../html/inicio.html", cargarContenido)
+            obtenerPagina("./html/inicio.html", cargarContenido)
             d.removeEventListener("keydown", jugando)
         }
 
@@ -53,7 +53,7 @@ function controladorEventosclick() {
                 return
             }
             palabrasAdivinanza.push(valorMayusculasInput)
-            obtenerPagina("../html/jugar.html", cargarJuego)
+            obtenerPagina("./html/jugar.html", cargarJuego)
 
         }
     })
